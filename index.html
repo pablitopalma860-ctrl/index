@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pobreza: Análisis Integral y Propuestas de Solución</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            padding: 3rem 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .objective-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: scale(1.05);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            background: #e74c3c;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+        }
+
+        .value-item:nth-child(even) {
+            transform: rotate(2deg);
+            background: #c0392b;
+        }
+
+        .value-item:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .impacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .impact-card {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover::before {
+            top: -25%;
+            right: -25%;
+        }
+
+        .student-commitment {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::after {
+            content: '💡';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+
+        .conclusions-recommendations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .conclusion-item, .recommendation-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #3498db;
+        }
+
+        .recommendation-item {
+            border-left-color: #e67e22;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .interview-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .conclusions-recommendations {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>La Pobreza: Un Desafío Global</h1>
+            <p class="subtitle">Análisis integral, marcos conceptuales y propuestas de solución</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-menu">
+                <a href="#introduccion" class="nav-item">Introducción</a>
+                <a href="#objetivos" class="nav-item">Objetivos</a>
+                <a href="#marcos" class="nav-item">Marcos</a>
+                <a href="#justificacion" class="nav-item">Justificación</a>
+                <a href="#valores" class="nav-item">Valores</a>
+                <a href="#impactos" class="nav-item">Impactos</a>
+                <a href="#soluciones" class="nav-item">Soluciones</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="introduccion">
+                <h2>Introducción al Tema</h2>
+                <div class="card">
+                    <p>La <span class="highlight">pobreza</span> representa uno de los desafíos más complejos y urgentes de nuestro tiempo. No se trata únicamente de la falta de recursos económicos, sino de un fenómeno multidimensional que abarca la privación de oportunidades, la exclusión social, la vulnerabilidad y la falta de voz y poder de los más desfavorecidos.</p>
+                    <p>Este análisis integral busca comprender las múltiples facetas de la pobreza, desde sus causas estructurales hasta sus manifestaciones cotidianas, con el objetivo de proponer soluciones efectivas y sostenibles que permitan construir una sociedad más justa e inclusiva.</p>
+                </div>
+            </section>
+
+            <section id="objetivos">
+                <h2>Objetivos del Estudio</h2>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <h3>Objetivo General</h3>
+                        <p>Analizar integralmente el fenómeno de la pobreza desde múltiples perspectivas para proponer estrategias efectivas de reducción y prevención.</p>
+                    </div>
+                    <div class="objective-card">
+                        <h3>Objetivo Específico 1</h3>
+                        <p>Identificar los factores estructurales y coyunturales que perpetúan los ciclos de pobreza en diferentes contextos sociales.</p>
+                    </div>
+                    <div class="objective-card">
+                        <h3>Objetivo Específico 2</h3>
+                        <p>Evaluar el impacto de las políticas públicas actuales en la reducción de la pobreza y proponer mejoras sustanciales.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="marcos">
+                <h2>Marcos de Referencia</h2>
+                
+                <div class="card">
+                    <h3>Marco Conceptual - Resumen</h3>
+                    <p>La pobreza se define como la <strong>condición en la cual las personas carecen de los recursos necesarios para satisfacer sus necesidades básicas</strong> y alcanzar un nivel de vida digno. Incluye dimensiones como pobreza absoluta (ingresos insuficientes para necesidades básicas), pobreza relativa (desigualdad comparativa), y pobreza multidimensional (carencias en educación, salud, vivienda, y participación social).</p>
+                </div>
+
+                <div class="card">
+                    <h3>Marco Legal - Ejemplo</h3>
+                    <p><strong>Constitución Política de Guatemala, Artículo 119:</strong> "El Estado orientará la economía nacional para lograr la utilización de los recursos naturales y el potencial humano, para incrementar la riqueza y tratar de lograr el pleno empleo y la equitativa distribución del ingreso nacional." Este marco legal establece la responsabilidad estatal en la reducción de la pobreza y la promoción del desarrollo equitativo.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Marco Histórico - Ejemplo</h3>
+                    <p>En Guatemala, la <strong>firma de los Acuerdos de Paz en 1996</strong> marcó un hito en la lucha contra la pobreza, estableciendo compromisos específicos para reducir la pobreza rural que afectaba al 80% de la población indígena. Sin embargo, 27 años después, los indicadores muestran que la pobreza rural sigue siendo un desafío persistente, evidenciando la necesidad de enfoques más integrales.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Marco Contextual - Ejemplo</h3>
+                    <p>En el <strong>contexto latinoamericano actual</strong>, la pandemia de COVID-19 incrementó la pobreza extrema de 67.7 millones a 81.2 millones de personas entre 2019 y 2021. Guatemala presenta una tasa de pobreza del 59.3% según el INE 2014, con mayor incidencia en áreas rurales (76.1%) y entre población indígena (79.2%), configurando un panorama de desigualdades estructurales profundas.</p>
+                </div>
+            </section>
+
+            <section id="justificacion">
+                <h2>Justificación del Estudio</h2>
+                <div class="card">
+                    <p>La investigación sobre pobreza se justifica por su <span class="highlight">urgencia social y moral</span>. Millones de personas viven en condiciones indignas que limitan su desarrollo humano pleno. La pobreza no solo afecta a quienes la padecen directamente, sino que genera costos sociales, económicos y políticos que debilitan el tejido social y limitan el desarrollo nacional.</p>
+                    <p>Comprender sus causas y manifestaciones es fundamental para diseñar políticas públicas efectivas, promover la justicia social y garantizar que todas las personas tengan oportunidades reales de desarrollo y bienestar.</p>
+                </div>
+            </section>
+
+            <section id="valores">
+                <h2>Valores No Aplicados en el Contexto de la Pobreza</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <strong>SOLIDARIDAD</strong><br>
+                        Falta de apoyo mutuo y responsabilidad social compartida
+                    </div>
+                    <div class="value-item">
+                        <strong>JUSTICIA SOCIAL</strong><br>
+                        Distribución inequitativa de recursos y oportunidades
+                    </div>
+                    <div class="value-item">
+                        <strong>DIGNIDAD HUMANA</strong><br>
+                        Condiciones de vida que vulneran la dignidad básica
+                    </div>
+                    <div class="value-item">
+                        <strong>IGUALDAD DE OPORTUNIDADES</strong><br>
+                        Acceso desigual a educación, salud y empleo digno
+                    </div>
+                    <div class="value-item">
+                        <strong>RESPONSABILIDAD CIUDADANA</strong><br>
+                        Indiferencia social hacia las condiciones de pobreza
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Planteamiento del Problema - Resumen</h3>
+                    <p>La pobreza en Guatemala presenta características multidimensionales que van más allá de la falta de ingresos. Se manifiesta como un <strong>círculo vicioso</strong> donde la falta de acceso a educación de calidad, servicios de salud, empleo digno, y participación social perpetúa condiciones de exclusión y vulnerabilidad. Las causas estructurales incluyen desigualdad histórica, concentración de la tierra, debilidad institucional, y patrones culturales discriminatorios que requieren abordajes integrales y sostenidos.</p>
+                </div>
+            </section>
+
+            <section id="experiencias">
+                <h2>Experiencias y Resultados de Entrevistas</h2>
+                <div class="interview-summary">
+                    <h3>Resumen de Conclusiones de Entrevistas</h3>
+                    <p><strong>Metodología:</strong> Se realizaron entrevistas a profundidad con 15 familias en condición de pobreza, 5 líderes comunitarios, y 8 funcionarios públicos.</p>
+                    
+                    <p><strong>Hallazgos principales:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>El 87% de las familias identifica la <strong>falta de empleo estable</strong> como principal causa de su situación</li>
+                        <li>El 73% reporta dificultades de acceso a servicios de salud de calidad</li>
+                        <li>El 91% considera que la educación es clave para salir de la pobreza, pero el 68% no puede costear educación superior para sus hijos</li>
+                        <li>Los líderes comunitarios enfatizan la necesidad de <strong>programas integrales</strong> que no solo proporcionen recursos, sino que fortalezcan capacidades</li>
+                        <li>Los funcionarios reconocen limitaciones presupuestarias y de coordinación interinstitucional</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="impactos">
+                <h2>Impactos que Genera en la Sociedad</h2>
+                <div class="impacts-grid">
+                    <div class="impact-card">
+                        <h3>📚 Impacto Educativo</h3>
+                        <p>La deserción escolar alcanza el 45% en áreas de alta pobreza, perpetuando ciclos intergeneracionales de exclusión y limitando el desarrollo del capital humano nacional.</p>
+                    </div>
+                    <div class="impact-card">
+                        <h3>🏥 Impacto en Salud Pública</h3>
+                        <p>Mayor incidencia de enfermedades prevenibles, desnutrición crónica infantil del 46.5%, y sobrecarga de servicios de salud pública con costos adicionales al Estado.</p>
+                    </div>
+                    <div class="impact-card">
+                        <h3>💼 Impacto Económico</h3>
+                        <p>Pérdida de productividad nacional, menor consumo interno, economía informal del 70%, y reducción de la competitividad del país en mercados globales.</p>
+                    </div>
+                    <div class="impact-card">
+                        <h3>🏛️ Impacto Político</h3>
+                        <p>Debilitamiento de la democracia, menor participación ciudadana, inestabilidad social, y presión sobre instituciones públicas con recursos limitados.</p>
+                    </div>
+                    <div class="impact-card">
+                        <h3>👥 Impacto Social</h3>
+                        <p>Fragmentación del tejido social, aumento de la violencia e inseguridad, migración forzada, y pérdida de cohesión comunitaria que afecta el desarrollo integral.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="compromisos">
+                <h2>Compromisos Estudiantiles</h2>
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Pablo - Estudiante de Trabajo Social</h3>
+                    <p>"Me comprometo a desarrollar un proyecto de intervención comunitaria en mi comunidad, enfocado en el fortalecimiento de capacidades productivas de madres solteras en situación de pobreza. Implementaré talleres de emprendimiento, alfabetización financiera, y crearé una red de apoyo mutuo que permita generar ingresos sostenibles y romper los ciclos de dependencia."</p>
+                </div>
+                
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Carlos - Estudiante de Economía</h3>
+                    <p>"Asumo el compromiso de investigar y proponer modelos alternativos de microfinanciamiento que sean culturalmente pertinentes y accesibles para población en pobreza rural. Trabajaré con cooperativas locales para diseñar productos financieros inclusivos que promuevan la inversión productiva y el desarrollo económico local."</p>
+                </div>
+
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Vanni - Estudiante de Psicología</h3>
+                    <p>"Me comprometo a crear un programa de apoyo psicosocial para familias en situación de pobreza, enfocándome en fortalecer la autoestima, resiliencia y habilidades parentales. Desarrollaré talleres de salud mental comunitaria y estableceré grupos de apoyo que permitan sanar traumas intergeneracionales y construir proyectos de vida dignos."</p>
+                </div>
+
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Pedro - Estudiante de Ingeniería</h3>
+                    <p>"Asumo el compromiso de desarrollar tecnologías apropiadas y sostenibles para comunidades rurales en pobreza. Trabajaré en la implementación de sistemas de agua potable, energía renovable y comunicaciones que mejoren la calidad de vida y generen oportunidades de desarrollo económico local."</p>
+                </div>
+
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Vidal - Estudiante de Educación</h3>
+                    <p>"Me comprometo a implementar programas de educación popular y alfabetización para adultos en comunidades marginadas. Desarrollaré metodologías pedagógicas inclusivas que respeten las culturas locales y promuevan la formación de líderes comunitarios comprometidos con la transformación social."</p>
+                </div>
+
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Ángel - Estudiante de Administración</h3>
+                    <p>"Asumo el compromiso de crear una incubadora de emprendimientos sociales que apoye a jóvenes de escasos recursos en el desarrollo de proyectos productivos. Proporcionaré capacitación en gestión empresarial, acceso a microcréditos y mentoría continua para garantizar la sostenibilidad de los emprendimientos."</p>
+                </div>
+
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Luis - Estudiante de Agronomía</h3>
+                    <p>"Me comprometo a promover la agricultura sostenible y seguridad alimentaria en comunidades rurales pobres. Implementaré técnicas agroecológicas, estableceré huertos familiares y comunitarios, y capacitaré en conservación de semillas criollas para garantizar la soberanía alimentaria y mejorar los ingresos familiares."</p>
+                </div>
+
+                <div class="student-commitment">
+                    <h3>👨‍🎓 Compromiso de Mathew - Estudiante de Comunicación Social</h3>
+                    <p>"Asumo el compromiso de crear una plataforma de comunicación comunitaria que visibilice las realidades de la pobreza y amplifique las voces de las comunidades afectadas. Desarrollaré contenidos educativos, documentales sociales y campañas de sensibilización que promuevan la solidaridad y la acción social transformadora."</p>
+                </div>
+            </section>
+
+            <section id="soluciones">
+                <h2>Propuestas de Solución</h2>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <h3>💼 Programa Integral de Empleabilidad</h3>
+                        <p>Creación de centros de capacitación técnica y profesional articulados con demandas del mercado laboral, incluyendo formación en oficios, habilidades digitales, y emprendimiento. Vinculación directa con empresas para garantizar inserción laboral efectiva y seguimiento post-empleo.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h3>🌾 Desarrollo Económico Local Sostenible</h3>
+                        <p>Implementación de cadenas productivas rurales que integren producción, procesamiento y comercialización. Fortalecimiento de cooperativas, acceso a crédito rural, asistencia técnica agrícola, y desarrollo de mercados locales que generen valor agregado y empleo digno en las comunidades.</p>
+                    </div>
+                    <div class="solution-card">
+                        <h3>📱 Plataforma Digital de Inclusión Social</h3>
+                        <p>Desarrollo de una aplicación móvil que conecte personas en pobreza con oportunidades de empleo, capacitación, servicios gubernamentales, y programas de apoyo. Incluye sistema de identificación de necesidades, seguimiento de casos, y medición de impacto en tiempo real.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="conclusiones-recomendaciones">
+                <h2>Conclusiones y Recomendaciones</h2>
+                <div class="conclusions-recommendations">
+                    <div>
+                        <div class="conclusion-item">
+                            <h3>🎯 Conclusión 1</h3>
+                            <p>La pobreza en Guatemala es un fenómeno <strong>multidimensional y estructural</strong> que requiere abordajes integrales que vayan más allá de las transferencias monetarias. Los factores históricos, culturales, económicos y políticos se interrelacionan creando trampas de pobreza que solo pueden romperse mediante estrategias coordinadas y sostenidas en el tiempo.</p>
+                        </div>
+                        
+                        <div class="conclusion-item">
+                            <h3>📊 Conclusión 2</h3>
+                            <p>Los programas actuales de reducción de la pobreza muestran <strong>impactos limitados</strong> debido a la falta de articulación interinstitucional, recursos insuficientes, y ausencia de enfoques territoriales y culturalmente pertinentes. Es necesario un cambio paradigmático hacia políticas públicas más efectivas y participativas.</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="recommendation-item">
+                            <h3>💡 Recomendación 1</h3>
+                            <p><strong>Crear un Sistema Nacional de Reducción de la Pobreza</strong> que articule todos los niveles de gobierno, sociedad civil, sector privado, y cooperación internacional. Este sistema debe contar con marco legal propio, presupuesto garantizado, y mecanismos de monitoreo y evaluación con participación ciudadana efectiva.</p>
+                        </div>
+                        
+                        <div class="recommendation-item">
+                            <h3>🌍 Recomendación 2</h3>
+                            <p><strong>Implementar un enfoque territorial diferenciado</strong> que reconozca las particularidades culturales, geográficas, y económicas de cada región. Los programas deben diseñarse participativamente con las comunidades, incorporar conocimientos ancestrales, y promover el desarrollo endógeno sostenible con pertinencia cultural y ambiental.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Análisis Integral sobre la Pobreza. Un compromiso con la justicia social y el desarrollo humano.</p>
+            <p>Juntos podemos construir una sociedad más equitativa y solidaria.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación de aparición progresiva
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animación a las tarjetas
+        document.querySelectorAll('.card, .objective-card, .impact-card, .solution-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+
+        // Efecto hover para valores no aplicados
+        document.querySelectorAll('.value-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'rotate(0deg) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                if (Array.from(this.parentElement.children).indexOf(this) % 2 === 0) {
+                    this.style.transform = 'rotate(-2deg) scale(1)';
+                } else {
+                    this.style.transform = 'rotate(2deg) scale(1)';
+                }
+            });
+        });
+
+        // Cambio de color del navbar al hacer scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
